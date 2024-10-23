@@ -1,6 +1,12 @@
 import { DocumentTextIcon } from "@sanity/icons";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
+const STATES = [
+  { title: "Alabama", value: "AL" },
+  { title: "Alaska", value: "AK" },
+  { title: "Arizona", value: "AZ" },
+];
+
 export const postType = defineType({
   name: "post",
   title: "Post",
@@ -79,16 +85,35 @@ export const postType = defineType({
       name: "body",
       type: "blockContent",
     }),
+    defineField({
+      title: "U.S. State",
+      name: "state",
+      type: "string",
+      options: {
+        list: STATES,
+        layout: "dropdown",
+      },
+    }),
   ],
   preview: {
     select: {
       title: "title",
       author: "author.name",
       media: "mainImage",
+      state: "state",
     },
     prepare(selection) {
-      const { author } = selection;
-      return { ...selection, subtitle: author && `by ${author}` };
+      const { author, state } = selection;
+      const stateName =
+        state &&
+        STATES.flatMap((option) =>
+          option.value === state ? [option.title] : []
+        );
+      return {
+        ...selection,
+        subtitle: author && `by ${author}`,
+        title: state ? `${state} is ${stateName}` : "No state selected",
+      };
     },
   },
 });
