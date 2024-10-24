@@ -48,10 +48,8 @@ export const postType = defineType({
       options: {
         source: "title",
       },
-      readOnly: ({ currentUser }) => {
-        console.log("currentUser", currentUser);
-        return !currentUser.roles.find(({ name }) => name === "administrator");
-      },
+      readOnly: ({ currentUser }) =>
+        !currentUser.roles.find(({ name }) => name === "administrator"),
     }),
     defineField({
       name: "author",
@@ -112,7 +110,6 @@ export const postType = defineType({
       return {
         ...selection,
         subtitle: author && `by ${author}`,
-        title: state ? `${state} is ${stateName}` : "No state selected",
       };
     },
   },

@@ -13,7 +13,6 @@ import { apiVersion, dataset, projectId } from "./src/sanity/env";
 import { schema } from "./src/sanity/schemaTypes";
 import { structure } from "./src/sanity/structure";
 import { media } from "sanity-plugin-media";
-import { RocketIcon } from "@sanity/icons";
 
 export default defineConfig({
   basePath: "/studio",
@@ -28,16 +27,4 @@ export default defineConfig({
     visionTool({ defaultApiVersion: apiVersion }),
     media(),
   ],
-  tools: (prev, context) => {
-    console.log(context); // logs { getClient, currentUser, schema, projectId, dataset}
-    return [
-      {
-        name: "my-tool",
-        title: "My super-cool tool",
-        icon: RocketIcon,
-        component: (props) => <div>I am a tool, albeit not a useful one</div>,
-      },
-      ...prev, // remember to include previous values
-    ];
-  },
 });
