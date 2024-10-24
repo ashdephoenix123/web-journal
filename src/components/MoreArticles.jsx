@@ -15,7 +15,7 @@ const MoreArticles = () => {
       <h4 className={`text-4xl text-center mb-12 ${libre.className}`}>
         Read More Articles
       </h4>
-      <div className="max-w-screen-lg mx-auto grid grid-cols-3 gap-4">
+      <div className="max-w-screen-lg mx-auto lg:grid grid-cols-3 gap-4">
         {articles.map((article) => (
           <ArticleCard
             key={article.id}

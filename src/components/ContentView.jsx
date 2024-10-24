@@ -7,7 +7,7 @@ import { libre } from "@/pages/fonts/fonts";
 
 const ContentView = ({ post }) => {
   return (
-    <div className={`max-w-screen-md mx-auto my-12`}>
+    <div className={`max-w-screen-md mx-auto`}>
       <h1
         className={`text-4xl mb-12 leading-normal tracking-tight ${libre.className}`}
       >

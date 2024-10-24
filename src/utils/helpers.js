@@ -12,3 +12,24 @@ export const cta = (type, title, url) => {
       return "/";
   }
 };
+
+export const capitalize = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1, string.length);
+};
+
+export const textToUrl = (text) => {
+  return text.replace(" ", "-");
+};
+
+export const urlToText = (text) => {
+  return text.replace("-", " ");
+};
+
+export const convertFileToBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+};
