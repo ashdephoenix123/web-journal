@@ -1,23 +1,23 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
-const ArticleCard = () => {
+const ArticleCard = ({ title, description, img }) => {
   return (
-    <div className="max-w-[33%] p-4 rounded-lg overflow-hidden">
-      <div className="relative w-full h-52 rounded-t-lg  overflow-hidden">
-        <Image src="/images/user.jpeg" alt="" fill className="object-cover" />
+    <Link href="/" className="w-full bg-black bg-opacity-90 group">
+      <div className="relative w-full h-52  overflow-hidden">
+        <Image
+          src={img.src}
+          alt={img.alt}
+          fill
+          className="object-cover group-hover:scale-105 transition-all duration-500"
+        />
       </div>
-      <div className="bg-black p-4 rounded-b-lg overflow-hidden text-sm">
-        <h4 className="font-semibold text-lg leading-tight mb-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, unde!
-        </h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo
-          exercitationem incidunt delectus sapiente animi minus aspernatur
-          similique necessitatibus quibusdam laudantium.
-        </p>
+      <div className="p-6 min-h-72">
+        <h4 className="font-bold text-xl leading-tight mb-4">{title}</h4>
+        <p>{description}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

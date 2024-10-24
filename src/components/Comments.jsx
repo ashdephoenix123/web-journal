@@ -11,9 +11,12 @@ const Comments = () => {
         name="commentForPost"
         id="commentForPost"
         rows={4}
-        className="bg-white bg-opacity-10 w-full outline-none rounded-lg p-2 text-sm placeholder-white placeholder-opacity-20"
+        className="bg-white bg-opacity-10 w-full outline-none rounded-lg p-4   text-sm placeholder-white placeholder-opacity-20"
         placeholder="Type here something..."
       ></textarea>
+      <button className="bg-white bg-opacity-70 hover:bg-opacity-100 text-black px-4 flex ms-auto mt-1 text-sm py-2 rounded-lg font-bold  transition-all duration-200">
+        Send
+      </button>
       <div className="text-sm my-6 flex flex-col gap-4">
         {dmummyComment.map((content) => (
           <CommentArea

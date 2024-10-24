@@ -3,16 +3,24 @@ import { PortableTextRenderer } from "@/utils/PortableTextRenderer";
 import Image from "next/image";
 import Link from "next/link";
 import ShareAnArticle from "./ShareAnArticle";
+import { libre } from "@/pages/fonts/fonts";
 
 const ContentView = ({ post }) => {
   return (
     <div className={`max-w-screen-md mx-auto my-12`}>
-      <h1 className={`text-5xl mb-12 font-semibold`}>
-        Lorem Ipsum is simply dummy text of the printing
+      <h1
+        className={`text-4xl mb-12 leading-normal tracking-tight ${libre.className}`}
+      >
+        People of Wayanad require change: BJP candidate Navya Haridas files
       </h1>
-      <div className="relative w-full min-h-96 rounded-lg overflow-hidden mb-12">
-        <Image src={post.mainImage} alt="" fill className="object-cover" />
-      </div>
+      <Image
+        src={post.mainImage}
+        alt=""
+        width={2560}
+        height={1440}
+        sizes="100vw"
+        className="object-cover rounded-lg mb-12"
+      />
       <div className="flex gap-2 items-center mb-12">
         <Image
           src="/images/user.jpeg"
