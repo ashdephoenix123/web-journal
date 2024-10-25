@@ -1,175 +1,74 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { footerSections } from "@/database/content";
+import Socials from "./Socials";
+import { libre } from "@/pages/fonts/fonts";
 
-const Footer = () => {
+const Footer = ({ className }) => {
   return (
     <>
       <div
-        className={`bg-[#0F0E0E]  flex justify-center flex-col px-5  md:px-[10%] items-center`}
+        className={`bg-[#0F0E0E]  flex justify-center flex-col px-5  md:px-[10%] items-center ${className}`}
       >
-        <div className="grid grid-cols-4 gap-5 md:gap-12 md:grid-cols-9 w-[100%]  border-t border-b py-24 border-[#878A944D] border-opacity-30">
+        <div className="lg:grid grid-cols-4 gap-5 md:gap-12 md:grid-cols-9 w-[100%]  border-t border-b py-24 border-[#878A944D] border-opacity-30">
           <div className="md:col-span-3 col-span-4">
-            <div className="h-[32px] relative w-[168px]">
-              <Image
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                fill
-                alt="kd"
-                src={"/images/main-logo.png"}
-              />
-            </div>
+            <Image
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              width={64}
+              height={64}
+              alt="footer company logo"
+              src={"/images/main-logo-transparent.png"}
+            />
             <p className="pt-5 font-normal md:text-[1rem] pr-3 text-grey-xLight">
-              Deepspatial is an outcome based artificial intelligence company,
-              enabling organizations to enhance their decision-making
-              capabilities by leveraging the power of data and AI.
+              Stay informed with{" "}
+              <span className="font-bold tracking-wide">Web Journal</span> -
+              Delivering fresh, reliable news and insights on the topics that
+              matter most, all in one place.
             </p>
-            <div className="w-max md:gap-3 gap-2 text-3xl md:text-[2rem]   mt-6 flex relative justify-between">
-              <Link
-                target="_blank"
-                href={"https://www.linkedin.com/company/deepspatial/"}
-              >
-                <i class="inline-block   bx bxl-linkedin-square "></i>
-              </Link>
-              <Link target="_blank" href={"https://x.com/deepspatialai"}>
-                <i class="inline-block  bx bxl-twitter"></i>
-              </Link>
-              <Link
-                target="_blank"
-                href={
-                  "https://www.instagram.com/deepspatial/?igshid=YmMyMTA2M2Y%3D"
-                }
-              >
-                <i class="inline-block   bx bxl-instagram"></i>
-              </Link>
-              <Link
-                target="_blank"
-                href={"https://www.facebook.com/Deepspatial"}
-              >
-                <i class="inline-block  bx bxl-facebook-square"></i>
-              </Link>
-            </div>
+            <Socials className="mt-6" />
           </div>
-          <div className="col-span-2 flex flex-col  items-start md:pl-3">
-            <div className="flex flex-col text-start">
-              <h4 className="pb-3 font-medium text-[1.4rem]">
-                {footerSections[0].label}
-              </h4>
-              {footerSections[0].links.map((link) => (
-                <Link
-                  className="pb-3 font-normal text-[1rem] text-grey-xLight"
-                  href={link.href}
-                  key={link.id}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-            <div className="flex flex-col mt-5">
-              <h4 className="pb-3 font-medium text-[18px]">
-                {footerSections[3].label}
-              </h4>
-              {footerSections[3].links.map((link) => (
-                <Link
-                  className="pb-3 font-normal text-[16px] text-grey-xLight"
-                  href={link.href}
-                  key={link.id}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="col-span-2  flex flex-col items-start md:pl-4">
-            <div className="flex flex-col">
-              <h4 className="pb-3 font-medium text-[18px]">
-                {footerSections[1].label}
-              </h4>
-              {footerSections[1].links.map((link) => (
-                <Link
-                  className="pb-3 font-normal text-[16px] text-grey-xLight"
-                  href={link.href}
-                  key={link.id}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-            <div className="flex flex-col mt-5">
-              <h4 className="pb-3 font-medium text-[18px]">
-                {footerSections[4].label}
-              </h4>
-              {footerSections[4].links.map((link) => (
-                <Link
-                  className="pb-3 font-normal text-[16px] text-grey-xLight"
-                  href={link.href}
-                  key={link.id}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-            <div className="flex flex-col mt-5">
-              <h4 className="pb-3 font-medium text-[18px]">
-                {footerSections[5].label}
-              </h4>
-              {footerSections[5].links.map((link) => (
-                <Link
-                  className="pb-3 font-normal text-[16px] text-grey-xLight"
-                  href={link.href}
-                  key={link.id}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="col-span-2   flex flex-col items-start">
-            <div className="flex flex-col">
-              <h4 className="pb-3 font-medium text-[18px]">
-                {footerSections[2].label}
-              </h4>
-              {footerSections[2].links.map((link) => (
-                <Link
-                  className="pb-3 font-normal text-[16px] text-grey-xLight"
-                  href={link.href}
-                  key={link.id}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-            <div className="flex flex-col xl:pr-10 max-w-[100%]  mt-5">
-              <h4 className="pb-3 font-medium text-[18px]">
-                {footerSections[6].label}
-              </h4>
-              {footerSections[6].links.map((link) => (
-                <Link
-                  className="pb-3 font-normal text-[16px] text-grey-xLight"
-                  key={link.id}
-                  href={link.href}
-                >
-                  {link.label}
-                </Link>
-              ))}
+          <div className="col-start-7 col-span-4 items-end mt-12 lg:mt-auto">
+            <h4
+              className={`text-xl tracking-wide text-center lg:text-right mb-3 ${libre.className}`}
+            >
+              Subscribe to our NewsLetter
+            </h4>
+            <form
+              action="#"
+              className="inline-flex gap-2 bg-white bg-opacity-15 px-4 py-4 justify-center w-full"
+            >
+              <input
+                type="text"
+                name=""
+                id=""
+                className="outline-none bg-transparent text-sm tracking-wide flex-1"
+              />
+              <button className="">
+                <Image
+                  src="/images/send-icon.svg"
+                  alt="send icon"
+                  width={20}
+                  height={20}
+                  className=""
+                />
+              </button>
+            </form>
+            <div className="mt-12 lg:text-right text-sm text-center">
+              <p className="italic font-semibold mb-3">Contact Address :</p>
+              <p className="text-xs">
+                Checkpost, Siliguri <br />
+                West Bengal - 734003 <br />
+                9883475729 <br />
+                akashsarki12345@gmail.com
+              </p>
             </div>
           </div>
         </div>
-        <div className="text-white mt-5 text-[14px] pt-3 pb-20  md:items-center flex flex-col md:flex-row w-[100%] ">
-          <div className="flex  md:justify-center">
-            <div className="relative  size-4">
-              <Image
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="z-50"
-                alt="alt"
-                src={"/images/indianFlag.png"}
-                fill
-              />
-            </div>
-            <h3 className="text-grey-xLight pl-3">India</h3>
-          </div>
-          <h3 className="text-grey-xLight  md:my-0 my-5 md:ml-auto">
-            Copyright © 2024 Deepspatial. All Rights Reserved
+        <div className="text-white mt-5 text-[14px] pt-3 pb-20  lg:items-center flex flex-col lg:flex-row w-[100%] text-xs text-center">
+          {/* Will add localization */}
+          {/* <p>ss</p> */}
+          <h3 className="text-grey-xLight lg:my-0 my-5 lg:ml-auto">
+            Copyright © {new Date().getFullYear()} Web Journal. All Rights
+            Reserved
           </h3>
         </div>
       </div>

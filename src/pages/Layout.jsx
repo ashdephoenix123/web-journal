@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
       <main className={`${plusJakarta.className} pt-[128px] mx-5`}>
         {children}
       </main>
-      <Footer />
+      <Footer className={plusJakarta.className} />
     </>
   );
 };

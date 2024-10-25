@@ -27,7 +27,7 @@ const Header = ({ className }) => {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-contain"
             fill
-            src={"/images/company-logo.png"}
+            src={"/images/company-logo-transparent.png"}
             alt="alt"
           />
         </Link>
@@ -54,7 +54,7 @@ const Header = ({ className }) => {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-contain"
             fill
-            src={"/images/main-logo.png"}
+            src={"/images/main-logo-transparent.png"}
             alt="alt"
           />
         </Link>
