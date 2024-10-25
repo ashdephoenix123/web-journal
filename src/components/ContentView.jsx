@@ -6,12 +6,13 @@ import ShareAnArticle from "./ShareAnArticle";
 import { libre } from "@/pages/fonts/fonts";
 
 const ContentView = ({ post }) => {
+  const { title } = post;
   return (
     <div className={`max-w-screen-md mx-auto`}>
       <h1
         className={`text-4xl mb-12 leading-normal tracking-tight ${libre.className}`}
       >
-        People of Wayanad require change: BJP candidate Navya Haridas files
+        {title}
       </h1>
       <Image
         src={post.mainImage}

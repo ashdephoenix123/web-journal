@@ -1,9 +1,9 @@
 import ContentView from "@/components/ContentView";
 import Comments from "@/components/Comments";
 import MoreArticles from "@/components/MoreArticles";
-import { fetchAllPost } from "@/sanity/queries/fetchPost";
+import { fetchPost } from "@/sanity/queries/fetchPost";
 
-export default function Home({ posts }) {
+export default function Blog({ posts }) {
   return (
     <div>
       <ContentView post={posts[0]} />
@@ -13,7 +13,7 @@ export default function Home({ posts }) {
   );
 }
 
-export async function getServerSideProps() {
-  const posts = await fetchAllPost();
+export async function getServerSideProps({ query }) {
+  const posts = await fetchPost(query.slug);
   return { props: { posts } };
 }
