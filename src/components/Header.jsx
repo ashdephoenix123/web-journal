@@ -20,7 +20,7 @@ const Header = ({ className }) => {
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`md:px-8 absolute text-base lg:flex hidden z-50 w-full text-white header -translate-x-1/2 ${className}`}
+        className={`md:px-8 absolute text-sm lg:flex hidden z-50 w-full text-white header -translate-x-1/2 ${className}`}
       >
         <Link href="/" className="h-20 relative min-w-[10rem]">
           <Image
