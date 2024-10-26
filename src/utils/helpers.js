@@ -18,7 +18,7 @@ export const capitalize = (string) => {
 };
 
 export const textToUrl = (text) => {
-  return text.replace(" ", "-");
+  return text.replace(" ", "-").toLowerCase();
 };
 
 export const urlToText = (text) => {

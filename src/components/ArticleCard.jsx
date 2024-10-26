@@ -3,9 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const ArticleCard = ({ title, description, img }) => {
+const ArticleCard = ({ title, description, img, href }) => {
   return (
-    <Link href="/" className="w-full bg-black bg-opacity-90 group">
+    <Link href={href} className="w-full bg-black bg-opacity-90 group">
       <div className="relative w-full h-52  overflow-hidden">
         <Image
           src={img.src}
@@ -14,7 +14,7 @@ const ArticleCard = ({ title, description, img }) => {
           className="object-cover group-hover:scale-105 transition-all duration-500"
         />
       </div>
-      <div className="p-6 min-h-72">
+      <div className="p-6 min-h-72 bg-black bg-opacity-80">
         <h4
           className={`font-bold text-lg leading-wide mb-4 ${libre.className}`}
         >

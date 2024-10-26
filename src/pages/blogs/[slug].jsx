@@ -1,19 +1,22 @@
 import ContentView from "@/components/ContentView";
 import Comments from "@/components/Comments";
 import MoreArticles from "@/components/MoreArticles";
-import { fetchPost } from "@/sanity/queries/fetchPost";
+import { fetchAllPost, fetchPost } from "@/sanity/queries/fetchPost";
 
-export default function Blog({ post }) {
+export default function Blog({ post, allPosts }) {
   return (
     <div>
       <ContentView post={post} />
       <Comments />
-      <MoreArticles />
+      <MoreArticles articles={allPosts} />
     </div>
   );
 }
 
 export async function getServerSideProps({ query }) {
-  const post = await fetchPost(query.slug);
-  return { props: { post } };
+  const [allPosts, post] = await Promise.all([
+    fetchAllPost(3),
+    fetchPost(query.slug),
+  ]);
+  return { props: { post, allPosts } };
 }
