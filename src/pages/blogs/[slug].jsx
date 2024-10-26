@@ -15,7 +15,7 @@ export default function Blog({ post, allPosts }) {
 
 export async function getServerSideProps({ query }) {
   const [allPosts, post] = await Promise.all([
-    fetchAllPost(3),
+    fetchAllPost(0, 3, query.slug),
     fetchPost(query.slug),
   ]);
   return { props: { post, allPosts } };
