@@ -16,6 +16,8 @@ const Blogs = ({ posts }) => {
             img={{ src: article.mainImage, alt: article.title + " image" }}
             href={`/blogs/${article.slug}`}
             categories={article.categories}
+            author={{ name: article.author.name, image: article.author.image }}
+            publishedDate={article.publishedAt}
           />
         ))}
       </div>

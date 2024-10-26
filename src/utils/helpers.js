@@ -34,12 +34,13 @@ export const convertFileToBase64 = (file) => {
   });
 };
 
-export const formatDate = (isoDate) => {
+export const formatDate = (isoDate, options) => {
   const date = new Date(isoDate);
   const formattedDate = date.toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long",
     year: "numeric",
+    ...options,
   });
   return formattedDate;
 };
