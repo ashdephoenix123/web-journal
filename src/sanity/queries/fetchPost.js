@@ -3,7 +3,7 @@ import { client } from "../lib/client";
 export const fetchAllPost = async (end, start = 0) => {
   const range = end ? `[${start}...${end}]` : ``;
   const posts = await client.fetch(
-    `*[_type == "post"] | order(_createdAt desc) ${range} {_id, body, title, subTitle, "slug": slug.current,"mainImage": mainImage.asset->url, 'author' : {'name' : author->name, 'image' : author->image.asset->url} , 'publishedAt': _createdAt}`,
+    `*[_type == "post"] | order(_createdAt desc) ${range} {_id, body, title, subTitle, "slug": slug.current,"mainImage": mainImage.asset->url, 'author' : {'name' : author->name, 'image' : author->image.asset->url} , 'publishedAt': _createdAt, 'categories': categories[]->{title, "color": categoryColor.hex}}`,
     {}
   );
   return posts;
