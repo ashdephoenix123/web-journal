@@ -33,3 +33,13 @@ export const convertFileToBase64 = (file) => {
     reader.readAsDataURL(file);
   });
 };
+
+export const formatDate = (isoDate) => {
+  const date = new Date(isoDate);
+  const formattedDate = date.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+  return formattedDate;
+};

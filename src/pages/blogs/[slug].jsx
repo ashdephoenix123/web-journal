@@ -3,10 +3,10 @@ import Comments from "@/components/Comments";
 import MoreArticles from "@/components/MoreArticles";
 import { fetchPost } from "@/sanity/queries/fetchPost";
 
-export default function Blog({ posts }) {
+export default function Blog({ post }) {
   return (
     <div>
-      <ContentView post={posts[0]} />
+      <ContentView post={post} />
       <Comments />
       <MoreArticles />
     </div>
@@ -14,6 +14,6 @@ export default function Blog({ posts }) {
 }
 
 export async function getServerSideProps({ query }) {
-  const posts = await fetchPost(query.slug);
-  return { props: { posts } };
+  const post = await fetchPost(query.slug);
+  return { props: { post } };
 }

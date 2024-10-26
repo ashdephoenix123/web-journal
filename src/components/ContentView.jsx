@@ -4,15 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import ShareAnArticle from "./ShareAnArticle";
 import { libre } from "@/pages/fonts/fonts";
+import { formatDate } from "@/utils/helpers";
 
 const ContentView = ({ post }) => {
-  const { title } = post;
   return (
     <div className={`max-w-screen-md mx-auto`}>
       <h1
         className={`text-4xl mb-12 leading-normal tracking-tight ${libre.className}`}
       >
-        {title}
+        {post.title}
       </h1>
       <Image
         src={post.mainImage}
@@ -24,7 +24,7 @@ const ContentView = ({ post }) => {
       />
       <div className="flex gap-2 items-center mb-12">
         <Image
-          src="/images/user.jpeg"
+          src={post.author.image}
           alt=""
           width={100}
           height={100}
@@ -33,10 +33,10 @@ const ContentView = ({ post }) => {
         <p className="text-sm">
           posted by &nbsp;
           <Link href="/" className="font-semibold italic underline">
-            Akash Sarki
+            {post.author.name}
           </Link>
           &nbsp; on &nbsp;
-          <span className="font-semibold">24 October 2024</span>
+          <span className="font-semibold">{formatDate(post.publishedAt)}</span>
         </p>
       </div>
       <section>

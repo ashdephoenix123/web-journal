@@ -9,8 +9,9 @@ export const fetchAllPost = async () => {
 
 export const fetchPost = async (slug) => {
   const post = await client.fetch(
-    `*[_type == "post" && slug.current == $slug] {_id, body, title, subTitle, "mainImage": mainImage.asset->url}`,
+    `*[_type == "post" && slug.current == $slug] {_id, body, title, subTitle, "mainImage": mainImage.asset->url, 'author' : {'name' : author->name, 'image' : author->image.asset->url} , 'publishedAt': _createdAt}`,
+
     { slug }
   );
-  return post;
+  return post.length ? post[0] : {};
 };
