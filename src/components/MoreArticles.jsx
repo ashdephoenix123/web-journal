@@ -13,7 +13,7 @@ const MoreArticles = () => {
         className="-z-10 object-cover"
       />
       <h4 className={`text-4xl text-center mb-12 ${libre.className}`}>
-        Read More Articles
+        Read More Blog posts
       </h4>
       <div className="max-w-screen-lg mx-auto lg:grid grid-cols-3 gap-4">
         {articles.map((article) => (

@@ -1,8 +1,10 @@
 import { client } from "../lib/client";
 
-export const fetchAllPost = async () => {
+export const fetchAllPost = async (start = 0, end) => {
+  const range = end ? `[${start}...${end}]` : ``;
   const posts = await client.fetch(
-    `*[_type == "post"] {_id, body, "mainImage": mainImage.asset->url}`
+    `*[_type == "post"] | order(_createdAt desc) ${range} {_id, body, "mainImage": mainImage.asset->url}`,
+    {}
   );
   return posts;
 };

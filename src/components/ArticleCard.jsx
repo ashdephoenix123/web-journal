@@ -1,3 +1,4 @@
+import { libre } from "@/pages/fonts/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -14,8 +15,12 @@ const ArticleCard = ({ title, description, img }) => {
         />
       </div>
       <div className="p-6 min-h-72">
-        <h4 className="font-bold text-xl leading-tight mb-4">{title}</h4>
-        <p>{description}</p>
+        <h4
+          className={`font-bold text-lg leading-wide mb-4 ${libre.className}`}
+        >
+          {title}
+        </h4>
+        <p className="text-sm">{description}</p>
       </div>
     </Link>
   );
