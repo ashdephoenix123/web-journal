@@ -1,3 +1,4 @@
+import { formatDistanceToNow } from "date-fns";
 const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
 export const cta = (type, title, url) => {
@@ -44,3 +45,7 @@ export const formatDate = (isoDate, options) => {
   });
   return formattedDate;
 };
+
+export function timeAgo(timestamp) {
+  return formatDistanceToNow(new Date(timestamp * 1000), { addSuffix: true });
+}

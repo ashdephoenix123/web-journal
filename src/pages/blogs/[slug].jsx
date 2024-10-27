@@ -4,7 +4,6 @@ import MoreArticles from "@/components/MoreArticles";
 import { fetchAllPost, fetchPost } from "@/sanity/queries/fetchPost";
 
 export default function Blog({ post, allPosts }) {
-  console.log(post);
   return (
     <div>
       <ContentView post={post} />

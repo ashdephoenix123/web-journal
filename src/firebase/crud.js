@@ -6,6 +6,8 @@ import {
   where,
   getDocs,
   orderBy,
+  limit,
+  startAfter,
 } from "firebase/firestore";
 
 // Add a comment
@@ -19,14 +21,26 @@ export const addComment = async (postId, userId, content) => {
 };
 
 // Fetch comments for a specific post
-export const fetchComments = async (postId) => {
+export const fetchComments = async (
+  postId,
+  lastVisibleComment = null,
+  pageSize = 5
+) => {
   const commentsRef = collection(db, "comments");
-  const q = query(
+  let q = query(
     commentsRef,
     where("postId", "==", postId),
-    orderBy("createdAt", "desc")
+    orderBy("createdAt", "desc"),
+    limit(pageSize)
   );
+
+  if (lastVisibleComment) {
+    q = query(q, startAfter(lastVisibleComment));
+  }
+
   const snapshot = await getDocs(q);
   const comments = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-  return comments;
+  const lastVisible = snapshot.docs[snapshot.docs.length - 1];
+
+  return { comments, lastVisible };
 };
