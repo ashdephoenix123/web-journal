@@ -1,7 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CommentArea from "./CommentArea";
+import { addComment, fetchComments } from "@/firebase/crud";
 
-const Comments = () => {
+const Comments = ({ postId }) => {
+  const [comments, setComments] = useState([]);
+  const [userName, setUserName] = useState("");
+  const [content, setContent] = useState("");
+
+  const loadComments = async () => {
+    const commentsData = await fetchComments(postId);
+    setComments(commentsData);
+  };
+
+  useEffect(() => {
+    loadComments();
+  }, [postId]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await addComment(postId, userName, content);
+    setUserName("");
+    setContent("");
+    loadComments(); // reload comments after submission
+  };
+
+  return (
+    <div>
+      <h3>Comments</h3>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Your Name"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+        />
+        <textarea
+          placeholder="Your Comment"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
+        <button type="submit">Submit Comment</button>
+      </form>
+      <div>
+        {comments.map((comment) => (
+          <div key={comment.id}>
+            <p>
+              <strong>{comment.userName}</strong>: {comment.content}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
   return (
     <div className="max-w-screen-md mx-auto my-12">
       <h6 className="text-base tracking-tight italic mb-4 font-semibold">
