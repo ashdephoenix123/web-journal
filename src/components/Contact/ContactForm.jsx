@@ -18,6 +18,7 @@ const ContactForm = () => {
     try {
       console.log(values);
       toast.success("Successfully toasted!");
+      resetForm();
     } catch (error) {
       toast.error("This didn't work.");
     }
