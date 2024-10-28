@@ -7,7 +7,7 @@ const Blogs = ({ posts }) => {
   return (
     <div className="max-w-screen-lg m-auto">
       <h1 className={`text-4xl ${libre.className}`}>Blogs</h1>
-      <div className="max-w-screen-lg mx-auto lg:grid grid-cols-3 gap-4 my-12">
+      <div className="max-w-screen-lg mx-auto flex flex-col lg:grid grid-cols-3 gap-4 my-12">
         {posts.map((article) => (
           <ArticleCard
             key={article.id}

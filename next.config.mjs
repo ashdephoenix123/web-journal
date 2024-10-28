@@ -10,15 +10,6 @@ const nextConfig = {
       },
     ],
   },
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/blogs",
-        permanent: false,
-      },
-    ];
-  },
 };
 
 export default nextConfig;

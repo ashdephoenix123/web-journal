@@ -11,12 +11,12 @@ const MoreArticles = ({ articles }) => {
         src="/images/background-1.jpg"
         alt=""
         fill
-        className="-z-10 object-cover"
+        className="-z-10 object-cover hidden lg:block"
       />
       <h4 className={`text-4xl text-center mb-12 ${libre.className}`}>
         Read More Blog posts
       </h4>
-      <div className="max-w-screen-lg mx-auto lg:grid grid-cols-3 gap-4">
+      <div className="max-w-screen-lg mx-auto flex flex-col lg:grid grid-cols-3 gap-4">
         {articles.slice(0, 3).map((article) => (
           <ArticleCard
             key={article.id}
