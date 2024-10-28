@@ -1,14 +1,10 @@
 export const headerContent2 = [
   {
-    title: "Company",
+    title: "Blogs",
     subLinks: null,
   },
   {
-    title: "Merchandise",
-    subLinks: ["All", "Technology", "World", "MotoGP"],
-  },
-  {
-    title: "Blogs",
+    title: "Contact Us",
     subLinks: null,
   },
 ];
