@@ -2,9 +2,6 @@ import Image from "next/image";
 import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
-import { headerContent2 } from "@/database/content";
-import CustomDropDown from "./CustomDropDown";
-import { capitalize, textToUrl } from "@/utils/helpers";
 import MobileNavigation from "./MobileNavigation";
 
 const Header = ({ className }) => {
@@ -31,22 +28,20 @@ const Header = ({ className }) => {
             alt="alt"
           />
         </Link>
-        <div className="flex-grow flex-wrap pr-16 text-grey-light flex justify-center items-center gap-12">
-          {headerContent2.map((item, index) => (
-            <React.Fragment key={index}>
-              {item.subLinks === null ? (
-                <Link href={`/${textToUrl(item.title)}`} className="z-50">
-                  {capitalize(item.title)}
-                </Link>
-              ) : (
-                <CustomDropDown item={item} />
-              )}
-            </React.Fragment>
-          ))}
-        </div>
+        <Link href="/profile" className="text-grey-light self-center ms-auto">
+          <Image
+            src="/images/icons8-user-60.png"
+            width={20}
+            height={20}
+            alt="user icon"
+          />
+        </Link>
+        <Link href="/blogs" className="text-grey-light self-center ms-6">
+          Blogs
+        </Link>
         <Link href="/contact-us" className="text-grey-light self-center ms-6">
           Contact us
-        </Link>{" "}
+        </Link>
       </motion.div>
       <div className="flex justify-between lg:hidden absolute top-0 left-0 z-10 w-full px-5 py-2">
         <Link href="/" className="h-[80px] relative min-w-[4rem]">
