@@ -18,15 +18,19 @@ export const fetchPost = async (slug) => {
   return post.length ? post[0] : {};
 };
 
-export const fetchPostsLength = async () => {
-  const result = await client.fetch(`count(*[_type == "post"])`);
+export const fetchPostsLength = async (slug) => {
+  const query = slug ? " && $slug in categories[]->slug.current" : "";
+  const result = await client.fetch(`count(*[_type == "post" ${query}])`, {
+    slug,
+  });
   return result;
 };
 
-export const fetchCategoryPost = async (slug) => {
+export const fetchCategoryPost = async (slug, start = 0, end) => {
+  const range = end ? `[${start}...${end}]` : ``;
   const query = slug ? " && $slug in categories[]->slug.current" : "";
   const posts = await client.fetch(
-    `*[_type == "post" ${query}] {_id, body, title, subTitle, "slug": slug.current,"mainImage": mainImage.asset->url, 'author' : {'name' : author->name, 'image' : author->image.asset->url} , 'publishedAt': _createdAt, 'categories': categories[]->{title, "color": categoryColor.hex}}`,
+    `*[_type == "post" ${query}] | order(_createdAt desc) ${range}  {_id, body, title, subTitle, "slug": slug.current,"mainImage": mainImage.asset->url, 'author' : {'name' : author->name, 'image' : author->image.asset->url} , 'publishedAt': _createdAt, 'categories': categories[]->{title, "color": categoryColor.hex}}`,
     { slug }
   );
   return posts;
