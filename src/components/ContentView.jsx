@@ -3,7 +3,7 @@ import { PortableTextRenderer } from "@/utils/PortableTextRenderer";
 import Image from "next/image";
 import Link from "next/link";
 import ShareAnArticle from "./ShareAnArticle";
-import { libre } from "@/pages/fonts/fonts";
+import { libre } from "@/app/fonts/fonts";
 import { formatDate } from "@/utils/helpers";
 
 const ContentView = ({ post }) => {

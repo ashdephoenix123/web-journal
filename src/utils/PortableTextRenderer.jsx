@@ -2,7 +2,7 @@ import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { getImageDimensions } from "@sanity/asset-utils";
 import { urlFor } from "@/sanity/lib/imageBuilder";
-import { libre } from "@/pages/fonts/fonts";
+import { libre } from "@/app/fonts/fonts";
 
 const headingStyle = `font-bold tracking-wide mb-6 ${libre.className}`;
 

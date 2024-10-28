@@ -1,5 +1,5 @@
 import React from "react";
-import { libre } from "../fonts/fonts";
+import { libre } from "../../app/fonts/fonts";
 import ArticleCard from "@/components/ArticleCard";
 import { fetchAllPost } from "@/sanity/queries/fetchPost";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Socials from "./Socials";
-import { libre } from "@/pages/fonts/fonts";
+import { libre } from "@/app/fonts/fonts";
 
 const Footer = ({ className }) => {
   return (

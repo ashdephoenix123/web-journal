@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import ArticleCard from "./ArticleCard";
-import { libre } from "@/pages/fonts/fonts";
+import { libre } from "@/app/fonts/fonts";
 import Link from "next/link";
 
 const MoreArticles = ({ articles }) => {
