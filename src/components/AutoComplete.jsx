@@ -1,12 +1,15 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
-const AutoComplete = ({ options }) => {
+const AutoComplete = ({
+  options,
+  selectedCategory,
+  setSelectedCategory,
+  callback,
+}) => {
   const modalRef = useRef();
   const [showOptions, setShowOptions] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("");
   const [optionsToShow, setOptionsToShow] = useState(options);
-  console.log("selectedCategory", selectedCategory);
 
   const showTheOptions = (event) => {
     event.preventDefault();
@@ -21,11 +24,13 @@ const AutoComplete = ({ options }) => {
     closeTheOptions();
     setSelectedCategory("");
     setOptionsToShow(options);
+    callback && callback();
   };
 
   const updateSelectedCategory = (option) => {
     setSelectedCategory(option);
     closeTheOptions();
+    callback && callback(option.slug);
   };
 
   const writeToCategory = (e) => {

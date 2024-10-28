@@ -22,3 +22,12 @@ export const fetchPostsLength = async () => {
   const result = await client.fetch(`count(*[_type == "post"])`);
   return result;
 };
+
+export const fetchCategoryPost = async (slug) => {
+  const query = slug ? " && $slug in categories[]->slug.current" : "";
+  const posts = await client.fetch(
+    `*[_type == "post" ${query}] {_id, body, title, subTitle, "slug": slug.current,"mainImage": mainImage.asset->url, 'author' : {'name' : author->name, 'image' : author->image.asset->url} , 'publishedAt': _createdAt, 'categories': categories[]->{title, "color": categoryColor.hex}}`,
+    { slug }
+  );
+  return posts;
+};
