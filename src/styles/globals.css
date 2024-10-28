@@ -34,3 +34,7 @@ body {
 .listItemStyle > * {
   margin-bottom: 1rem;
 }
+
+.justify-article-height {
+  height: calc(100% - 13rem);
+}

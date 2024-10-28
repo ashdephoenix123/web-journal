@@ -23,7 +23,7 @@ const ArticleCard = ({
           className="object-cover group-hover:scale-105 transition-all duration-500"
         />
       </div>
-      <div className="p-6 min-h-72 bg-black bg-opacity-80 flex flex-col justify-between">
+      <div className="p-6 min-h-72 bg-white bg-opacity-10 flex flex-col justify-between justify-article-height">
         <div>
           {categories && (
             <div className="flex flex-wrap gap-2 mb-4">

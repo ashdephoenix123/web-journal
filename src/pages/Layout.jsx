@@ -10,13 +10,13 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 const Layout = ({ children }) => {
   return (
-    <>
+    <div className="relative">
       <Header className={plusJakarta.className} />
       <main className={`${plusJakarta.className} pt-[128px] mx-5`}>
         {children}
       </main>
       <Footer className={plusJakarta.className} />
-    </>
+    </div>
   );
 };
 
