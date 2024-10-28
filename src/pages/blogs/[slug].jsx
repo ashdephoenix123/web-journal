@@ -7,7 +7,7 @@ export default function Blog({ post, allPosts }) {
   return (
     <div>
       <ContentView post={post} />
-      <Comments postId={post._id} />
+      {/* <Comments postId={post._id} /> */}
       <MoreArticles articles={allPosts} />
     </div>
   );

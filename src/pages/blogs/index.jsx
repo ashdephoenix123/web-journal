@@ -1,7 +1,7 @@
 import React from "react";
 import { libre } from "../../app/fonts/fonts";
 import ArticleCard from "@/components/ArticleCard";
-import { fetchAllPost } from "@/sanity/queries/fetchPost";
+import { fetchAllPost, fetchPostsLength } from "@/sanity/queries/fetchPost";
 
 const Blogs = ({ posts }) => {
   return (
@@ -26,7 +26,10 @@ const Blogs = ({ posts }) => {
 };
 
 export async function getServerSideProps() {
-  const posts = await fetchAllPost();
+  const [posts, numOfPosts] = await Promise.all([
+    fetchAllPost(),
+    fetchPostsLength(),
+  ]);
   return { props: { posts } };
 }
 

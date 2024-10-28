@@ -17,3 +17,8 @@ export const fetchPost = async (slug) => {
   );
   return post.length ? post[0] : {};
 };
+
+export const fetchPostsLength = async () => {
+  const result = await client.fetch(`count(*[_type == "post"])`);
+  return result;
+};
