@@ -37,7 +37,7 @@ const AutoComplete = ({ options }) => {
   const filterOptions = (value) => {
     let filteredOptions = options ? [...options] : [];
     filteredOptions = filteredOptions.filter((opt) =>
-      opt.name.toLowerCase().includes(value)
+      opt.name.toLowerCase().includes(value.toLowerCase())
     );
     if (filteredOptions.length) {
       setOptionsToShow(filteredOptions);
@@ -64,7 +64,7 @@ const AutoComplete = ({ options }) => {
     <div className="relative" ref={modalRef}>
       <form
         onClick={(event) => showTheOptions(event)}
-        className="inline-flex gap-2 bg-white bg-opacity-15 px-4 py-4 justify-center max-w-fit"
+        className="inline-flex gap-2 bg-white bg-opacity-15 px-2 py-2 justify-center max-w-fit"
       >
         <input
           type="text"
@@ -90,7 +90,7 @@ const AutoComplete = ({ options }) => {
         </button>
       </form>
       <ul
-        className="absolute top-[52px] z-10 bg-black w-full max-h-52 overflow-y-scroll border border-white border-opacity-15 custom-scrollbar"
+        className="absolute top-[36px] z-10 bg-black w-full max-h-52 overflow-y-scroll border border-white border-opacity-15 custom-scrollbar"
         style={{ display: showOptions ? "block" : "none" }}
       >
         {typeof optionsToShow !== "string" && optionsToShow.length > 0 ? (
@@ -98,13 +98,13 @@ const AutoComplete = ({ options }) => {
             <li
               key={option.id}
               onClick={() => updateSelectedCategory(option)}
-              className="1 px-3 py-2 hover:bg-white hover:bg-opacity-15 cursor-pointer text-sm capitalize  whitespace-nowrap"
+              className="px-3 py-2 hover:bg-white hover:bg-opacity-15 cursor-pointer text-xs capitalize  whitespace-nowrap"
             >
               {option.name}
             </li>
           ))
         ) : (
-          <li className="1 px-3 py-2 text-sm italic capitalize whitespace-nowrap select-none">
+          <li className="px-3 py-2 text-xs italic capitalize whitespace-nowrap select-none">
             no results found
           </li>
         )}
