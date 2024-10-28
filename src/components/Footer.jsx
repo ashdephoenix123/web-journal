@@ -34,7 +34,7 @@ const Footer = ({ className }) => {
             </h4>
             <form
               action="#"
-              className="inline-flex gap-2 bg-white bg-opacity-15 px-4 py-4 justify-center w-full"
+              className="inline-flex gap-2 bg-white bg-opacity-15 px-4 py-4 justify-center w-full rounded"
             >
               <input
                 type="text"

@@ -1,5 +1,5 @@
 import { headerContent2 } from "@/database/content";
-import { capitalize, urlToText } from "@/utils/helpers";
+import { capitalize, textToUrl, urlToText } from "@/utils/helpers";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -43,7 +43,7 @@ const MobileNavigation = ({ className, closeNav }) => {
             {list.subLinks ? (
               <DropDownMob list={list} closeNav={closeNav} />
             ) : (
-              <Link href={`/${list.title}`} onClick={closeNav}>
+              <Link href={`/${textToUrl(list.title)}`} onClick={closeNav}>
                 <span className="">{capitalize(urlToText(list.title))}</span>
               </Link>
             )}
