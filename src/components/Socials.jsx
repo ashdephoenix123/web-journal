@@ -29,6 +29,6 @@ const Socials = ({ className = "" }) => {
 export default Socials;
 
 const socials = [
-  { id: "facebook", src: "/images/Facebook.svg", alt: "facebook-icon" },
+  { id: "facebook", src: "/images/facebook.svg", alt: "facebook-icon" },
   { id: "instagram", src: "/images/instagram.svg", alt: "linkedin-icon" },
 ];
