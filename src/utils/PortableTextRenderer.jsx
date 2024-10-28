@@ -2,6 +2,9 @@ import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { getImageDimensions } from "@sanity/asset-utils";
 import { urlFor } from "@/sanity/lib/imageBuilder";
+import { libre } from "@/pages/fonts/fonts";
+
+const headingStyle = `font-bold tracking-wide mb-6 ${libre.className}`;
 
 export const PortableTextRenderer = ({ value }) => {
   const components = {
@@ -9,10 +12,50 @@ export const PortableTextRenderer = ({ value }) => {
       image: SampleImageComponent,
     },
     block: {
-      normal: ({ children }) => <p>{children}</p>,
-      h2: ({ children }) => <h2>{children}</h2>,
-      h3: ({ children }) => <h3>{children}</h3>,
+      normal: ({ children }) => <p className="mb-6">{children}</p>,
+      h1: ({ children }) => (
+        <h1 className={`${headingStyle} text-2xl`}>{children}</h1>
+      ),
+      h2: ({ children }) => (
+        <h2 className={`${headingStyle} text-xl`}>{children}</h2>
+      ),
+      h3: ({ children }) => (
+        <h3 className={`${headingStyle} text-lg`}>{children}</h3>
+      ),
+      h4: ({ children }) => (
+        <h4 className={`${headingStyle} text-lg`}>{children}</h4>
+      ),
+      h5: ({ children }) => (
+        <h5 className={`${headingStyle} text-lg`}>{children}</h5>
+      ),
+      h6: ({ children }) => (
+        <h6 className={`${headingStyle} text-lg`}>{children}</h6>
+      ),
       // Add more block renderers if needed
+    },
+    list: {
+      // Ex. 1: customizing common list types
+      bullet: ({ children }) => (
+        <ul
+          className="listItemStyle mb-6"
+          style={{ listStyle: "disc", marginLeft: "20px" }}
+        >
+          {children}
+        </ul>
+      ),
+      number: ({ children }) => (
+        <ol
+          className="listItemStyle mb-6 list-decimal"
+          style={{ listStyle: "decimal", marginLeft: "20px" }}
+        >
+          {children}
+        </ol>
+      ),
+
+      // Ex. 2: rendering custom lists
+      checkmarks: ({ children }) => (
+        <ol className="m-auto text-lg">{children}</ol>
+      ),
     },
   };
   return <PortableText value={value} components={components} />;

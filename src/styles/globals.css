@@ -30,3 +30,7 @@ body {
   background: #ffffff;
   color: #000;
 }
+
+.listItemStyle > * {
+  margin-bottom: 1rem;
+}
