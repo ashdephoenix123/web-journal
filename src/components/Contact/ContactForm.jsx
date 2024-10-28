@@ -1,9 +1,8 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import { MyTextInput } from "./CustomInput";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { contactSchema } from "@/form-validation/contactSchema";
+import toast from "react-hot-toast";
 
 const defaultInputCSS =
   "block px-4 py-4 text-sm tracking-wide rounded outline-none  bg-opacity-15 bg-white";
@@ -18,9 +17,9 @@ const ContactForm = () => {
   const onSubmit = async (values, { resetForm }) => {
     try {
       console.log(values);
-      toast.success("Form submitted successfully!");
+      toast.success("Successfully toasted!");
     } catch (error) {
-      toast.error(`Error submitting form: ${error.message}`);
+      toast.error("This didn't work.");
     }
   };
 
@@ -67,7 +66,6 @@ const ContactForm = () => {
           </Form>
         )}
       </Formik>
-      <ToastContainer />
     </div>
   );
 };
