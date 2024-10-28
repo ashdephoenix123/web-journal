@@ -77,7 +77,7 @@ const AutoComplete = ({ options }) => {
           }
           placeholder="Browse Categories"
           onChange={writeToCategory}
-          className="outline-none bg-transparent text-sm tracking-wide flex-1 text-opacity-65 text-white"
+          className="outline-none bg-transparent text-xs tracking-wide flex-1 text-opacity-65 text-white"
         />
         <button type="button" onClick={resetOptions}>
           <Image
