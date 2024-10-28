@@ -54,12 +54,13 @@ const ContactForm = () => {
               label="Message"
               name="message"
               className={defaultInputCSS}
-              rows="3"
+              rows="5"
             />
 
             <button
               type="submit"
-              className="bg-white text-black rounded-lg block max-w-fit px-6 mx-auto py-2 font-extrabold text-lg tracking-tight mt-6 outline-none"
+              disabled={isSubmitting}
+              className="bg-white text-black rounded-lg block max-w-fit px-6 mx-auto py-2 font-extrabold text-lg tracking-tight mt-6 outline-none disabled:bg-opacity-30 disabled:cursor-not-allowed"
             >
               {isSubmitting ? "Sending..." : "Send"}
             </button>
