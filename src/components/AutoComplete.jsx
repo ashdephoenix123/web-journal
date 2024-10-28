@@ -1,7 +1,8 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const AutoComplete = ({ options }) => {
+  const modalRef = useRef();
   const [showOptions, setShowOptions] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [optionsToShow, setOptionsToShow] = useState(options);
@@ -45,8 +46,22 @@ const AutoComplete = ({ options }) => {
     }
   };
 
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      setShowOptions(false); // Close the modal
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="relative">
+    <div className="relative" ref={modalRef}>
       <form
         onClick={(event) => showTheOptions(event)}
         className="inline-flex gap-2 bg-white bg-opacity-15 px-4 py-4 justify-center max-w-fit"
