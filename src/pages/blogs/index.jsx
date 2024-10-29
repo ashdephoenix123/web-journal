@@ -11,7 +11,7 @@ import { fetchAllCategories } from "@/sanity/queries/fetchCategories";
 import toast from "react-hot-toast";
 import Loader from "@/components/Loader";
 
-let numOfBlogsToLoad = 3;
+let numOfBlogsToLoad = 6;
 
 const Blogs = ({ posts, allCategories, numOfBlogs }) => {
   const [allBlogs, setAllBlogs] = useState(posts);
@@ -23,6 +23,7 @@ const Blogs = ({ posts, allCategories, numOfBlogs }) => {
 
   const fetchCategoryBlog = async (slug) => {
     try {
+      if (selectedCategory?.slug === slug) return;
       setLoading(true);
       const [data, allDataLength] = await Promise.all([
         fetchCategoryPost(slug ? slug : null, 0, numOfBlogsToLoad),

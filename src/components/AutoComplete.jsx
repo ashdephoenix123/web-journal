@@ -24,7 +24,7 @@ const AutoComplete = ({
     closeTheOptions();
     setSelectedCategory("");
     setOptionsToShow(options);
-    callback && callback(null);
+    if (selectedCategory) callback && callback(null);
   };
 
   const updateSelectedCategory = (option) => {
