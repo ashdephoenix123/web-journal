@@ -9,30 +9,28 @@ import {
 import AutoComplete from "@/components/AutoComplete";
 import { fetchAllCategories } from "@/sanity/queries/fetchCategories";
 import toast from "react-hot-toast";
-import Image from "next/image";
+import Loader from "@/components/Loader";
 
-let numOfBlogsToLoad = 1;
-let startBlogIndex = numOfBlogsToLoad;
+let numOfBlogsToLoad = 3;
 
 const Blogs = ({ posts, allCategories, numOfBlogs }) => {
   const [allBlogs, setAllBlogs] = useState(posts);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [loading, setLoading] = useState(false);
+  const [loadMore, setLoadMore] = useState(false);
   const [blogsLength, setBlogsLength] = useState(numOfBlogs);
+  const [startBlogIndex, setStartBlogIndex] = useState(numOfBlogsToLoad);
 
   const fetchCategoryBlog = async (slug) => {
     try {
       setLoading(true);
       const [data, allDataLength] = await Promise.all([
-        fetchCategoryPost(
-          slug ? slug : null,
-          startBlogIndex,
-          startBlogIndex + numOfBlogsToLoad
-        ),
+        fetchCategoryPost(slug ? slug : null, 0, numOfBlogsToLoad),
         fetchPostsLength(slug),
       ]);
       setAllBlogs(data);
       setBlogsLength(allDataLength);
+      setStartBlogIndex(numOfBlogsToLoad);
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong, Please try later!");
@@ -43,19 +41,19 @@ const Blogs = ({ posts, allCategories, numOfBlogs }) => {
 
   const fetchMoreBlogs = async () => {
     try {
-      setLoading(true);
+      setLoadMore(true);
       const data = await fetchCategoryPost(
         typeof selectedCategory === "object" ? selectedCategory.slug : null,
         startBlogIndex,
         startBlogIndex + numOfBlogsToLoad
       );
-      startBlogIndex += numOfBlogsToLoad;
+      setStartBlogIndex((prev) => prev + numOfBlogsToLoad);
       setAllBlogs((prev) => [...prev, ...data]);
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong, Please try later!");
     } finally {
-      setLoading(false);
+      setLoadMore(false);
     }
   };
 
@@ -71,22 +69,27 @@ const Blogs = ({ posts, allCategories, numOfBlogs }) => {
         />
       </div>
       <div className="mx-auto flex flex-col lg:grid grid-cols-3 gap-4 my-12">
-        {allBlogs.map((article) => (
-          <ArticleCard
-            key={article.id}
-            title={article.title}
-            description={article.subTitle}
-            img={{ src: article.mainImage, alt: article.title + " image" }}
-            href={`/blogs/${article.slug}`}
-            categories={article.categories}
-            author={{
-              name: article.author.name,
-              image: article.author.image,
-            }}
-            publishedDate={article.publishedAt}
-          />
-        ))}
+        {loading ? (
+          <Loader />
+        ) : (
+          allBlogs.map((article) => (
+            <ArticleCard
+              key={article.id}
+              title={article.title}
+              description={article.subTitle}
+              img={{ src: article.mainImage, alt: article.title + " image" }}
+              href={`/blogs/${article.slug}`}
+              categories={article.categories}
+              author={{
+                name: article.author.name,
+                image: article.author.image,
+              }}
+              publishedDate={article.publishedAt}
+            />
+          ))
+        )}
       </div>
+      {loadMore && <Loader />}
       <button
         disabled={allBlogs.length == blogsLength || loading}
         onClick={fetchMoreBlogs}
@@ -108,14 +111,3 @@ export async function getServerSideProps() {
 }
 
 export default Blogs;
-
-{
-  /* <div className="col-span-3 mx-auto min-h-screen">
-  <Image
-    src="/images/loading-gif.svg"
-    alt="loading icon"
-    width={64}
-    height={64}
-  />
-</div>; */
-}
