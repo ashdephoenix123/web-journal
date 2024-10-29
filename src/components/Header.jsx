@@ -28,15 +28,15 @@ const Header = ({ className }) => {
             alt="alt"
           />
         </Link>
-        <Link href="/profile" className="text-grey-light self-center ms-auto">
+        {/* <Link href="/profile" className="text-grey-light self-center ms-auto">
           <Image
             src="/images/icons8-user-60.png"
             width={20}
             height={20}
             alt="user icon"
           />
-        </Link>
-        <Link href="/blogs" className="text-grey-light self-center ms-6">
+        </Link> */}
+        <Link href="/blogs" className="text-grey-light self-center ms-auto">
           Blogs
         </Link>
         <Link href="/contact-us" className="text-grey-light self-center ms-6">

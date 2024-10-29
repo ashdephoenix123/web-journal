@@ -24,10 +24,10 @@ const Footer = ({ className }) => {
               Delivering fresh, reliable news and insights on the topics that
               matter most, all in one place.
             </p>
-            <Socials className="mt-6" />
+            {/* <Socials className="mt-6" /> */}
           </div>
           <div className="col-start-7 col-span-4 items-end mt-12 lg:mt-auto">
-            <h4
+            {/* <h4
               className={`text-xl tracking-wide text-center lg:text-right mb-3 ${libre.className}`}
             >
               Subscribe to our NewsLetter
@@ -51,7 +51,7 @@ const Footer = ({ className }) => {
                   className=""
                 />
               </button>
-            </form>
+            </form> */}
             <div className="mt-12 lg:text-right text-sm text-center">
               <p className="italic font-semibold mb-3">Contact Address :</p>
               <p className="text-xs">
