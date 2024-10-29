@@ -1,0 +1,15 @@
+# Allow all bots to access the site
+User-agent: *
+
+# Block the following paths from being indexed
+Disallow: /profile/
+Disallow: /login/
+Disallow: /signup/
+Disallow: /forgot-password/
+Disallow: /api/
+
+# Allow search engines to crawl all blog posts
+Allow: /blogs/
+
+# Sitemap location (update with your actual URL)
+Sitemap: https://web-journal-theta.vercel.app/api/sitemap.xml
