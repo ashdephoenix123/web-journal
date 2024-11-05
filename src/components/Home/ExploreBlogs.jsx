@@ -2,6 +2,7 @@ import { libre } from "@/app/fonts/fonts";
 import React from "react";
 import ArticleCard from "../ArticleCard";
 import Link from "next/link";
+import { textToUrl } from "@/utils/helpers";
 
 const ExploreBlogs = ({ articles }) => {
   return (
@@ -18,7 +19,7 @@ const ExploreBlogs = ({ articles }) => {
             title={article.title}
             description={article.subTitle}
             img={{ src: article.mainImage, alt: article.title + " img" }}
-            href={`/blogs/${article.slug}`}
+            href={`/blogs/${textToUrl(article.categories[0].title)}/${article.slug}`}
             categories={article.categories}
             author={{ name: article.author.name, image: article.author.image }}
             publishedDate={article.publishedAt}

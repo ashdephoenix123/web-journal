@@ -3,6 +3,7 @@ import React from "react";
 import ArticleCard from "./ArticleCard";
 import { libre } from "@/app/fonts/fonts";
 import Link from "next/link";
+import { textToUrl } from "@/utils/helpers";
 
 const MoreArticles = ({ articles }) => {
   return (
@@ -23,7 +24,7 @@ const MoreArticles = ({ articles }) => {
             title={article.title}
             description={article.subTitle}
             img={{ src: article.mainImage, alt: article.title + " img" }}
-            href={`/blogs/${article.slug}`}
+            href={`/blogs/${textToUrl(article.categories[0].title)}/${article.slug}`}
           />
         ))}
       </div>

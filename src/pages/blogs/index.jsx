@@ -11,6 +11,7 @@ import { fetchAllCategories } from "@/sanity/queries/fetchCategories";
 import toast from "react-hot-toast";
 import Loader from "@/components/Loader";
 import Head from "next/head";
+import { textToUrl } from "@/utils/helpers";
 
 let numOfBlogsToLoad = 6;
 
@@ -88,7 +89,7 @@ const Blogs = ({ posts, allCategories, numOfBlogs }) => {
                 title={article.title}
                 description={article.subTitle}
                 img={{ src: article.mainImage, alt: article.title + " image" }}
-                href={`/blogs/${article.slug}`}
+                href={`/blogs/${textToUrl(article.categories[0].title)}/${article.slug}`}
                 categories={article.categories}
                 author={{
                   name: article.author.name,
