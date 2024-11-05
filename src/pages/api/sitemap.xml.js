@@ -4,17 +4,17 @@ export default async function handler(req, res) {
   const posts = await fetchAllPost();
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="https://web-journal-theta.vercel.app/schemas/sitemap/0.9">
+  <urlset xmlns="https://blogs.akashsarki.com/schemas/sitemap/0.9">
     <!-- Homepage -->
     <url>
-      <loc>https://web-journal-theta.vercel.app/</loc>
+      <loc>https://blogs.akashsarki.com/</loc>
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
     </url>
 
     <!-- Blog Listing Page -->
     <url>
-      <loc>https://web-journal-theta.vercel.app/blogs</loc>
+      <loc>https://blogs.akashsarki.com/blogs</loc>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
@@ -23,7 +23,7 @@ export default async function handler(req, res) {
       .map(
         (post) => `
         <url>
-          <loc>https://web-journal-theta.vercel.app/blogs/${post.slug}</loc>
+          <loc>https://blogs.akashsarki.com/blogs/${post.slug}</loc>
           <lastmod>${post.updatedAt}</lastmod>
           <changefreq>weekly</changefreq>
           <priority>0.7</priority>
