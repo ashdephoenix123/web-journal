@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   const posts = await fetchAllPost();
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://blogs.akashsarki.com/schemas/sitemap/0.9">
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <!-- Homepage -->
     <url>
       <loc>https://blogs.akashsarki.com/</loc>
