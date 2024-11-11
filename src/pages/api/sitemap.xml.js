@@ -1,4 +1,5 @@
 import { fetchAllPost } from "@/sanity/queries/fetchPost";
+import { textToUrl } from "@/utils/helpers";
 
 export default async function handler(req, res) {
   const posts = await fetchAllPost();
@@ -23,7 +24,7 @@ export default async function handler(req, res) {
       .map(
         (post) => `
         <url>
-          <loc>https://blogs.akashsarki.com/blogs/${post.slug}</loc>
+          <loc>https://blogs.akashsarki.com/blogs/${textToUrl(post.categories[0].title)}/${post.slug}</loc>
           <lastmod>${post.updatedAt}</lastmod>
           <changefreq>weekly</changefreq>
           <priority>0.7</priority>
