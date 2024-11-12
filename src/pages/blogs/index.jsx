@@ -12,10 +12,12 @@ import toast from "react-hot-toast";
 import Loader from "@/components/Loader";
 import Head from "next/head";
 import { textToUrl } from "@/utils/helpers";
+import { useRouter } from "next/router";
 
 let numOfBlogsToLoad = 6;
 
 const Blogs = ({ posts, allCategories, numOfBlogs }) => {
+  const router = useRouter();
   const [allBlogs, setAllBlogs] = useState(posts);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [loading, setLoading] = useState(false);
@@ -24,6 +26,7 @@ const Blogs = ({ posts, allCategories, numOfBlogs }) => {
   const [startBlogIndex, setStartBlogIndex] = useState(numOfBlogsToLoad);
 
   const fetchCategoryBlog = async (slug) => {
+    let param = slug ? `?category=${slug}` : ``;
     try {
       if (selectedCategory?.slug === slug) return;
       setLoading(true);
@@ -34,6 +37,7 @@ const Blogs = ({ posts, allCategories, numOfBlogs }) => {
       setAllBlogs(data);
       setBlogsLength(allDataLength);
       setStartBlogIndex(numOfBlogsToLoad);
+      router.push(`/blogs${param}`, undefined, { shallow: true });
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong, Please try later!");
