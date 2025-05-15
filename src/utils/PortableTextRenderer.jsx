@@ -3,6 +3,8 @@ import Image from "next/image";
 import { getImageDimensions } from "@sanity/asset-utils";
 import { urlFor } from "@/sanity/lib/imageBuilder";
 import { libre } from "@/app/fonts/fonts";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism"; // choose your theme
 
 const headingStyle = `font-bold tracking-wide mb-6 ${libre.className}`;
 
@@ -10,6 +12,16 @@ export const PortableTextRenderer = ({ value }) => {
   const components = {
     types: {
       image: SampleImageComponent,
+      code: ({ value }) => (
+        <div className="my-6">
+          <SyntaxHighlighter
+            language={value.language || "javascript"}
+            style={oneDark}
+          >
+            {value.code}
+          </SyntaxHighlighter>
+        </div>
+      ),
     },
     block: {
       normal: ({ children }) => <p className="mb-6">{children}</p>,
