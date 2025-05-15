@@ -3,7 +3,10 @@ import Hero from "@/components/Home/Hero";
 import { fetchAllPost } from "@/sanity/queries/fetchPost";
 import Head from "next/head";
 
-export default function Home({ posts }) {
+export default function Home({ posts, error }) {
+  if (error) {
+    return <div>Failed!</div>;
+  }
   return (
     <>
       <Head>
@@ -22,6 +25,12 @@ export default function Home({ posts }) {
 }
 
 export async function getServerSideProps() {
-  const posts = await fetchAllPost();
-  return { props: { posts } };
+  try {
+    const posts = await fetchAllPost();
+    return { props: { posts } };
+  } catch (error) {
+    return {
+      error: "Failed to load data!",
+    };
+  }
 }
