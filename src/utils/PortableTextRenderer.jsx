@@ -61,6 +61,23 @@ export const PortableTextRenderer = ({ value }) => {
         <ol className="m-auto text-lg">{children}</ol>
       ),
     },
+    marks: {
+      link: ({ value, children }) => {
+        const rel = !value.href.startsWith("/")
+          ? "noreferrer noopener"
+          : undefined;
+        return (
+          <a
+            href={value.href}
+            rel={rel}
+            target={value.blank ? "_blank" : "_self"}
+            className="underline"
+          >
+            {children}
+          </a>
+        );
+      },
+    },
   };
   return <PortableText value={value} components={components} />;
 };
