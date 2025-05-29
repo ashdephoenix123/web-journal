@@ -62,9 +62,20 @@ export const blockContentType = defineType({
       options: {
         language: "javascript",
         languageAlternatives: [
+          { title: "CSS", value: "css" },
           { title: "JavaScript", value: "javascript" },
-          { title: "TypeScript", value: "typescript" },
-          // Add other languages as needed
+          { title: "JSON", value: "json" },
+          { title: "JSON5", value: "json5" },
+          { title: "JSONp", value: "jsonp" },
+          { title: "Latex", value: "latex" },
+          { title: "plsql", value: "plsql" },
+          { title: "Python", value: "python" },
+          { title: "Regex", value: "regex" },
+          { title: "Sass", value: "sass" },
+          { title: "Scss", value: "scss" },
+          { title: "Sql", value: "sql" },
+          { title: "Typescript", value: "typescript" },
+          { title: "yaml", value: "yaml" },
         ],
       },
     },
